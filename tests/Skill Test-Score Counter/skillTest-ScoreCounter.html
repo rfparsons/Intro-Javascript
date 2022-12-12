@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            width:70%;
+            margin-left:auto;
+            margin-right:auto;
+            background-color: beige;
+            padding-left:10px;
+            padding-bottom:5px;
+        }
+
+        footer {
+            text-align: center;
+        }
+    </style>
+
+    <script>
+        /*
+            This form will gather input from the user to keep track of team stats for a football league
+
+            The league teams are listed below in the array teamNames.
+            For each team the manager wants to keep track of their win/loss record and total goals scored.
+            After each tournament the manager will enter the information for each team.
+            NOTE: You do NOT have to worry about previous tournaments. This app will only keep
+                information for one tournament.  And only until you leave the page or refresh.
+                Other JavaScript technologies would be used to keep track of this information from
+                tournament to tournament.
+        */
+
+        const teamNames = ["Dragons","Browns","Lightnings","Reds"];
+        let wins = []
+        let losses = []
+        let goals = []
+
+        function populateNames() {
+            let selector = document.querySelector("select");
+            for (let i=0; i<teamNames.length; i++){
+                selector.innerHTML = selector.innerHTML + "\n<option value='" + i +"'>" + teamNames[i] + "</option>";
+            }
+        }
+
+        function readWin() {
+            let winLossRadio = document.querySelectorAll("input[name='teamRecord']");
+		
+            // check every radio button and return the color of the selected one
+            for (let i=0; i < winLossRadio.length; i++) {
+                if (winLossRadio[i].checked) {
+                    return winLossRadio[i].value;
+                }
+            }
+        }
+
+        function updateTeams() {
+            let teamGoals = parseInt(document.getElementById("teamGoals").value);
+            let teamID = parseInt(document.querySelector("select").value);
+            let matchResult = readWin();
+
+            if (isNaN(teamID)) {
+                alert("Please select a team!");
+                return;
+            }
+            if (typeof matchResult == "undefined") {
+                alert("Please specify win/loss!");
+                return;
+            }
+            if (isNaN(teamGoals)) {
+                alert("Please enter an amount of goals!");
+                return;
+            }
+
+            if (matchResult == "w") {
+                wins[teamID]++;
+            }
+            else {
+                losses[teamID]++;
+            }
+
+            goals[teamID] += teamGoals;
+        }
+
+        function displayAll() {
+            for (let i=0; i<teamNames.length; i++) {
+                console.log("Team Name: " + teamNames[i]);
+                console.log("Record: " + wins[i] + "-" + losses[i]);
+                console.log("Goals: " + goals[i])
+            }
+        }
+
+        function pageSetup() {
+            let today = new Date(Date.now());
+            let year = today.getFullYear();
+
+            document.getElementById("currentYear").innerHTML = year;
+
+            populateNames();
+
+            for (let i=0; i<teamNames.length; i++) {
+                wins.push(0);
+                losses.push(0);
+                goals.push(0);
+            }
+        }
+    </script>
+</head>
+<body onload="pageSetup()">
+    <div id="container">
+        <header>
+            <h1>WDV221 Intro JavaScript</h1>
+            <h2>Skill Test - Score Counter</h2>
+        </header>
+        <main>
+            <form method="post" action="#">
+                <p>
+                    <label for="teamName">Select Team: </label>
+                    <select>
+                        <option value="">Choose a Team</option>
+                    </select>
+                    <span class="errorMsg"></span>
+                </p>
+
+                <p> Team Record: 
+                    <label>Win <input type="radio" name="teamRecord" value="w"></label>
+                    <label>Lose <input type="radio" name="teamRecord" value="l"></label>
+                    <span class="errorMsg"></span>
+                </p>
+
+                <p>
+                    <label for="teamGoals">Team Goals: </label>
+                    <input type="number" name="teamGoals" id="teamGoals" required placeholder="Enter Score">
+                    <span class="errorMsg"></span>
+                </p>
+
+                <p>
+                    <input type="button" name="updateTeam" value="Update Team" onclick="updateTeams()">
+                    <input type="reset" value="Try Again">
+                </p>
+                <p>
+                    <input type="button" name="displayTeams" value="Display Teams" onclick="displayAll()">
+                </p>
+
+            </form>
+            <h3>Instructions:</h3>
+            <ol>
+                <li>Use the teamNames array to populate the drop down field.</li>
+                <li>Create parallel arrays to accumulate team total goals and records.</li>
+                <li>The "Update Team" button should:</li>
+                    <ol type="a">
+                        <li>Validate that a team was selected. If not, display an error message to the form. Stop the process.</li>
+                        <li>Validate that the Team Record was selected. If not, display an error message to the form. Stop the process.</li>
+                        <li>Validate that the Team Goals input is a whole number. If not, use the integer without any decimal values.</li>
+                        <li>Update the records for the selected team.</li>
+                        <li>Update the team total goals with the input goals for the selected team.</li>
+                    </ol>  and record for the selected team. </li>
+                <li>The "Display Teams" button should display all the team arrays in the console.</li>
+                <li>Update the Copyright statement to always show a current year for YEAR.</li>
+            </ol>
+        </main>
+        <footer>
+            <p>Copyright&copy;2021-<span id="currentYear"></span> DMACC All rights Reserved</p>
+        </footer>
+    </div>
+</body>
+</html>

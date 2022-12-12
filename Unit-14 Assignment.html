@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 14 Assignment</title>
+    <style>
+        .mono {
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+    <script>
+        function pagePrintln(text) {
+            let out = document.querySelector("p.mono");
+
+            out.innerHTML = out.innerHTML + text + "<br>\n";
+        }
+
+        function pageSetup() {
+            const bookA = {
+                bookTitle: "Beginning Javascript",
+                bookPrice: 19.99,
+                bookAuthor: "Smith",
+
+                studentDiscountPrice: function() {
+                    const DISCOUNT = 0.20
+
+                    return this.bookPrice - (this.bookPrice * DISCOUNT)
+                }
+            }
+
+            const bookBstr = '{"bookTitle":"Logic with ES6","bookPrice":29.49,"bookAuthor":"Johson-Parker"}'
+
+
+            pagePrintln(JSON.stringify(bookA));
+            
+            let bookB = JSON.parse(bookBstr);
+            pagePrintln("");
+            pagePrintln("Book B from JSON: ");
+            pagePrintln("Book Title: " + bookB.bookTitle);
+            pagePrintln("Book Price: " + bookB.bookPrice);
+            pagePrintln("Book Author: " + bookB.bookAuthor);
+        }
+    </script>
+</head>
+<body onload="pageSetup()">
+    <h1>Unit-14 Assignment</h1>
+    <h3>JSON Objects</h3>
+    <p class="mono"></p>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="BankAccount.js"></script>
+
+    <script>
+        let newBank = new BankAccount(500); // instantiate a new object from the BankAccount class
+
+        console.log(newBank);
+
+        newBank.setAcctName("Savings");
+        newBank.setAcctNumber(123456);
+
+        console.log(newBank.getAcctBalance());
+
+        newBank.depositFunds(21.21);
+
+        console.log(newBank.getAcctBalance()); //expect 521.21
+
+        newBank.withdrawFunds(20.20);
+
+        console.log(newBank.acctInfo()); //expect Savings, 123456, 501.01 (barring float rounding errors)
+    </script>
+</head>
+<body>
+    <h1>WDV221 Intro JavaScript</h1>
+    <h2>Bank Account Class - Proof</h2>
+
+    <p>(Output is in the console!)</p>
+</body>
+</html>

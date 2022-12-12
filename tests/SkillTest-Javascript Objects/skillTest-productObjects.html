@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>WDV221 Intro Javascript</title>
+		<script src="productArrays.js"></script>
+		<script>
+			function pagePrintln(text) {
+            	let out = document.querySelector("div");
+
+            	out.innerHTML = "<p>" + out.innerHTML + text + "</p>\n";
+        	}
+			
+			/*			
+			Product objects have the following properties and methods
+				prod_name
+				prod_number
+				prod_manufacture_price
+				prod_suggestedRetailPrice( )	
+					this function will create the suggest retail price of the object
+					to calculate take manufacture_price times 1.67
+			*/
+			let product1 = {
+				prod_name: productNames[0],
+				prod_number: productNumbers[0],
+				prod_manufacture_price: productManPrices[0],
+				prod_suggestedRetailPrice: function() {
+					return this.prod_manufacture_price * 1.67;
+				}
+			}
+			let product2 = {
+				prod_name: productNames[1],
+				prod_number: productNumbers[1],
+				prod_manufacture_price: productManPrices[1],
+				prod_suggestedRetailPrice: function() {
+					return this.prod_manufacture_price * 1.67;
+				}
+			}
+			let product3 = {
+				prod_name: productNames[2],
+				prod_number: productNumbers[2],
+				prod_manufacture_price: productManPrices[2],
+				prod_suggestedRetailPrice: function() {
+					return this.prod_manufacture_price * 1.67;
+				}
+			}
+
+			let productList = [product1, product2, product3];
+
+			function displayList() {
+				let out = "";
+				let USDFormat = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+				pagePrintln("Number of Products in Product List: " + productList.length);
+
+				for (let i=0; i<productList.length; i++) {
+					out += "Product: " + productList[i].prod_name + "<br>";
+					out += "Product Number: " + productList[i].prod_number + "<br>";
+					out += "Product Wholesale Price: " + USDFormat.format(productList[i].prod_manufacture_price) + "<br>";
+					out += "Product Suggested Retail Price: " + USDFormat.format(productList[i].prod_suggestedRetailPrice()) + "<br>";
+					pagePrintln(out);
+					out = "";
+				}
+			}
+		</script>
+	
+	</head>
+	
+	<body onload="displayList()">
+		<h1>WDV221 Intro Javascript</h1>
+		<h2>Skill Test - Create and Display Javascript Objects</h2>
+		
+		<h3>Product Inventory List</h3>
+		<div>
+			<p>EXAMPLE OUTPUT</p>
+			<p>Number of Products in Product List: 1</p>
+			<p>
+				Product: Standard Keyboard</br>
+				Product Number: std-key<br>
+				Product Wholesale Price: $11.90</br>
+				Product Suggested Retail Price: $19.87</br>
+			</p>
+			<p>PROJECT OUTPUT</p>
+		
+		
+		</div>
+		<h3>Instructions</h3>
+		<ol>
+			<li>Attach the external script file as the source for your data</li>
+			<li>Using the data provided in the external script file create an array of objects called productList using the object format in the script</li>
+			<li>Use a loop to display the contents of the productList on the page beginning after the Example Output</li>
+			<li>All prices should be displayed as USD formatted currency</li>
+		</ol>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

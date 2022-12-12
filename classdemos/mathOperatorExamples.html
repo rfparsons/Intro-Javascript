@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        let counter = 20;        
+
+        function displayCounter(){
+            console.log("inside displayCounter()");
+            console.log(counter--);
+        }
+
+        function pageSetup(){
+            console.log("inside pageSetup()");
+            document.querySelector("p button").onclick = function(){
+                displayCounter();
+            };
+        }
+
+        counter++;           
+
+        counter = counter + 1;      
+
+        counter += 1;           //assigned operators - same as counter = counter + 1
+
+        //counter = counter + (2-1);
+
+        let deliveryDays = 26;  
+        let weeks = Math.floor(26 / 7);
+        let days = 26 % 7;
+
+        console.log("Expected Delivery: " + weeks + " weeks and " + days + " days");
+
+        //rules for leap year
+
+        let today = new Date();
+
+        let leapYear = today.getFullYear() % 4;
+
+        if( leapYear == 0){
+            console.log("Leap Year");
+        }
+        else{
+            console.log("Not a leap year");
+        }
+
+        console.log();
+
+        console.log(parseInt(10.00));
+        console.log(parseInt("4Fredd"));
+        console.log(parseInt("4.6Fredd"));
+
+        console.log(parseFloat("4Fredd"));
+        console.log(parseFloat("4.6Fredd"));
+        console.log(parseFloat("Fredd 4.6"));
+
+
+    </script>
+</head>
+<body onload="pageSetup()">
+    <h1>WDV221 Intro JavaScript</h1>
+    <h2>UNIT-7 Math Operators</h2>
+    <p>
+        <button>Add To Counter</button>
+    </p>
+</body>
+</html>

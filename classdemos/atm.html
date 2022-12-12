@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="BankAccount/BankAccount.js"></script>
+
+    <script>
+        /* Bank App planning  Inputs/Process/Outputs
+            ATM App - define as the base project/scope
+
+        Inputs:
+            account number/card number
+            Amount to withdraw
+            Amount to deposit
+            Deposit - information, payor,payee
+            Deposit - choose deposit account
+            - Scan/upload - check image
+
+        Outputs:
+            Account Balance
+            Transaction History-Withdraws
+            Transaction Hitory-deposits
+
+
+        Processes:
+            -Sign On
+                input-account number
+                input-PIN
+                process- verify account number & PIN - hard code an example info
+                Access your account (process)
+                    create a new BankAccount object
+                    load your name, account and beginning balance
+            Deposit
+            Withdrawal
+                process-make sure you are signed on
+                input-Amount
+                input-which account to withdraw from, if more than one
+                process-check balance?
+
+            Check Balance
+                format as Currency!
+
+            Show transactions-Withdraws
+            Show transactions-Deposit
+            -Deposit checks
+            -Transfer/Bill Pay moneys
+
+        */
+
+        let accountObject = new BankAccount();  //scope? global
+
+        function processSignOn(){
+            alert("inside processSignOn()");
+            const acctNumber = document.querySelector("#accountNumber").value;
+            const acctPIN = document.querySelector("#accountPIN").value;
+            //hard code valid account number and pin to use for testing
+            const testAcctNumber = 12345;
+            const testAcctPIN = 12345;
+
+            if(acctNumber == testAcctNumber && acctPIN == testAcctPIN){
+                //assume valid account
+                //create a new BankAccount object-hard code test data
+                accountObject.acctName = "Mary Smith";
+                accountObject.acctNumber = testAcctNumber;
+                accountObject.acctBalance = 500.00;
+
+                console.log(accountObject);
+            }
+            else{
+                //assume invalid account
+                //display error "Invalid Account Number/PIN"
+                alert("Invalid Account Number/PIN");
+            }
+        }//end processSignOn()
+
+        function checkBalance(){
+            alert(accountObject.acctBalance);
+        }//end checkBalance()
+
+        function withdrawCash(){
+            alert("inside withdrawCas()");
+        }//end withdrawCash()
+
+    </script>
+</head>
+<body>
+    <h1>WDV221 Intro JavaScript</h1>
+    <h2>Project Example</h2>
+    <main>
+        <div id="atmScreen">
+            <p>Welcome to My ATM Project</p>
+            <form method="post" action="#">
+                <p>
+                    <label for="accountNumber">Account Number:</label>
+                    <input type="text" name="accountNumber" id="accountNumber">
+                </p>
+                <p>
+                    <label for="accountPIN">PIN: </label>
+                    <input type="text" name="accountPIN" id="accountPIN">
+                </p>
+                <p>
+                    <input type="button" name="Signon" value="Signon" onclick="processSignOn()">
+                    <input type="reset">
+                </p>
+
+            </form>
+            <div>
+                <button onclick="withdrawCash()">Withdraw Cash</button>
+                <button>Deposit Funds</button>
+                <button onclick="checkBalance()">Check Balance</button>
+                <button>Show Deposit transactions</button>
+                <button>Show Withdrawal transactions</button>
+            </div>
+
+        </div>
+
+
+
+    </main>
+</body>
+</html>

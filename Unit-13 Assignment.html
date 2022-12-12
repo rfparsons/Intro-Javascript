@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 13 Assignment</title>
+    <style>
+        .mono {
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+    <script>
+        let bookTitles = ["Beginning Javascript", "Logic with ES6", "Javascript Ojbects Made Easy"];
+        let bookPrices = [19.99, 29.49, 999.99];
+        let bookAuthor = ["Smith", "Johson-Parker", "Westin"];
+
+        class masterBook {
+            bookTitle = "";
+            bookPrice = 0.0;
+            bookAuthor = "";
+
+            constructor(bookTitle, bookPrice, bookAuthor) {
+                this.bookAuthor = bookAuthor;
+                this.bookPrice = bookPrice;
+                this.bookTitle = bookTitle;
+            }
+
+            studentDiscountPrice() {
+                const DISCOUNT = 0.20
+
+                return this.bookPrice - (this.bookPrice * DISCOUNT)
+            }
+        }
+
+        function pagePrintln(text) {
+            let out = document.querySelector("p.mono");
+
+            out.innerHTML = out.innerHTML + text + "<br>\n";
+        }
+
+        function pageSetup() {
+            let book1 = new masterBook(bookTitles[0], bookPrices[0], bookAuthor[0]);
+            console.log(book1);
+            let book2 = new masterBook(bookTitles[1], bookPrices[1], bookAuthor[1]);
+            console.log(book2);
+            let book3 = new masterBook(bookTitles[2], bookPrices[2], bookAuthor[2]);
+            console.log(book3);
+
+            let javascriptBooks = [book1, book2, book3];
+
+            for (let i=0; i < javascriptBooks.length; i++) {
+                pagePrintln("Book " + (i+1));
+                pagePrintln("Book Title: " + javascriptBooks[i].bookTitle);
+                pagePrintln("Book Price: " + javascriptBooks[i].bookPrice);
+                pagePrintln("Book Author: " + javascriptBooks[i].bookAuthor);
+                pagePrintln("Book Discount Price: " + javascriptBooks[i].studentDiscountPrice());
+            }
+
+            const bookA = {
+                bookTitle: bookTitles[0],
+                bookPrice: bookPrices[0],
+                bookAuthor: bookAuthor[0],
+
+                studentDiscountPrice: function() {
+                    const DISCOUNT = 0.20
+
+                    return this.bookPrice - (this.bookPrice * DISCOUNT)
+                }
+            }
+
+            const bookB = {
+                bookTitle: bookTitles[1],
+                bookPrice: bookPrices[1],
+                bookAuthor: bookAuthor[1],
+
+                studentDiscountPrice: function() {
+                    const DISCOUNT = 0.20
+
+                    return this.bookPrice - (this.bookPrice * DISCOUNT)
+                }
+            }
+
+            const bookC = {
+                bookTitle: bookTitles[2],
+                bookPrice: bookPrices[2],
+                bookAuthor: bookAuthor[2],
+
+                studentDiscountPrice: function() {
+                    const DISCOUNT = 0.20
+
+                    return this.bookPrice - (this.bookPrice * DISCOUNT)
+                }
+            }
+
+            let newBooks = [bookA, bookB, bookC];
+
+            for (let i=0; i < newBooks.length; i++) {
+                pagePrintln("Book " + String.fromCharCode(i+65)); // 65 is ASCII for 'A'
+                pagePrintln("Book Title: " + newBooks[i].bookTitle);
+                pagePrintln("Book Price: " + newBooks[i].bookPrice);
+                pagePrintln("Book Author: " + newBooks[i].bookAuthor);
+                pagePrintln("Book Discount Price: " + newBooks[i].studentDiscountPrice());
+            }
+        }
+    </script>
+</head>
+<body onload="pageSetup()">
+    <h1>Unit-13 Assignment</h1>
+    <h3>Create JavaScript Objects</h3>
+    <p class="mono"></p>
+</body>
+</html>

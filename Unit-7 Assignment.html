@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Generator</title>
+    <style>
+        span {
+            border: 1px;
+            border-color: black;
+            border-style: solid;
+            background-color: lightgray;
+            padding: 5px;
+        }
+    </style>
+    <script>
+        function rng() {
+            let rand = Math.random()
+
+            return Math.floor(rand * 10) + 1;
+        }
+
+        function setField() {
+            let result = rng()
+            let field = document.querySelector("span");
+
+            field.innerHTML = result;
+        }
+    </script>
+</head>
+<body>
+    <h1>Unit 7 Assignment</h1>
+    <h3>Random Number Generator</h3>
+
+    <p><button onclick="setField()">Generate number!</button></p>
+    <p><span></span></p>
+</body>
+</html>

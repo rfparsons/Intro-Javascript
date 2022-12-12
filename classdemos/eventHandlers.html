@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function displayValue(inValue){
+            // BEHIND THE SCENES let inValue = "HTML Event Handler"
+            //console.log("inside displayValue()");
+            //this function will display whatever value is passed into the function
+            //on the console.
+            console.log(inValue);
+        }
+
+        //onchange is best for select/drop down lists
+
+
+        function pageSetup(){
+            //call this function AFTER the document object is fully loaded
+            //apply any events that need something in the document object
+            //Assign Button2 a Javascript DOM event click
+            document.getElementById("button2").onclick = function(){
+                //console.log("called JavaScript onclick property");
+                displayValue("JavaScript onclick Event");
+            }
+
+            //document.getElementById("button3").addEventListener('click',displayValue("eventListener()"));
+            //document.getElementById("button3").addEventListener('click',displayValue);
+            //leave off the ( ) of the function name
+            document.getElementById("button3").addEventListener('click',function() {
+                displayValue("eventListener()")
+            
+            });
+        }
+    </script>
+</head>
+<body onload="pageSetup()">
+    <h1>WDV221 Intro Javascript</h1>
+    <h2>UNIT-5 Event Handlers</h2>
+    <p>
+        <button id="button1" onclick="displayValue('HTML Event Handler')">Display DMACC</button>
+    </p>
+
+    <p>
+        <button id="button2">Display Javascript</button>
+    </p>
+    
+    <p>
+        <button id="button3">Display Event Listener</button>
+    </p>
+</body>
+</html>

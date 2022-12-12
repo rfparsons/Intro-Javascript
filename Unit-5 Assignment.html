@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 5 Assignment</title>
+    <style>
+        #btn {
+            font-size: large;
+        }
+
+        #textblock {
+            font-size: small;
+        }
+
+        #textblock:hover {
+            color: #008500;
+        }
+
+        #colorpicker {
+            font-size: large;
+        }
+    </style>
+    <script>
+        function buttonClicked() {
+            console.log("Button clicked!")
+        }
+
+        function cat() {
+            console.log("The cat didn't catch your mouse!")
+        }
+
+        function rollover() {
+            console.log("Rolled over!")
+        }
+         
+        function changed() {
+            console.log("Color changed!");
+        }
+
+        function loaded() {
+            console.log("Page loaded!");
+
+            button = document.getElementById("btn");
+            picture = document.getElementById("catpic");
+            selector = document.getElementById("colorpicker");
+
+            button.onclick = buttonClicked;
+            picture.onmouseout = cat;
+            selector.onchange = changed;
+        }
+        
+    </script>
+</head>
+<body onload="loaded()">
+    <h1>Unit 5 Event Handlers</h1>
+
+    <button id="btn">Click here!</button>
+
+    <p id="textblock" onmouseover="rollover()">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc pulvinar ac neque et accumsan. In eget nisi ante. Etiam rutrum sed massa at pellentesque. Maecenas vel ligula non nisl euismod viverra in eu ligula. Ut sollicitudin a mi et luctus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc sed imperdiet lectus. Sed elementum eu orci vulputate accumsan. Suspendisse sodales lacinia egestas. Nulla accumsan, sem placerat tempor molestie, justo lacus vehicula purus, quis ultricies nulla turpis ac metus. Sed eu magna a neque tincidunt convallis ut in leo. Nunc sodales interdum urna a bibendum. Etiam eget eros vel felis malesuada pulvinar. Nunc consectetur quam tortor. Donec semper placerat congue. </p>
+
+    <p><img src="img/Screenshot_20220525_165645crop.png" alt="Image of a cat with a pink bow in its hair" id="catpic"></p>
+
+    <select name="options" id="colorpicker">
+        <option value="none" selected disabled>Pick a color</option>
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+    </select>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+
+        function addQuantities(){
+            //alert("inside addQuantities()");
+
+            // ALL data from a form field/value will be String data type
+            //assume that all quantities are whole numbers, use parseInt()
+
+            console.log( document.getElementById("val1").value );
+            let val1 = parseInt( document.getElementById("val1").value );
+
+            console.log( document.getElementById("val2").value );
+            let val2 = document.getElementById("val2").value;
+            
+            let total = val1 + parseInt(val2);
+            console.log(total);
+
+            document.getElementById("results").value = total;   //assign value to text box
+
+            document.querySelector("form p span").innerHTML = total; 
+        }
+
+        function resetForm(){
+            //alert('inside resetForm()');
+            document.querySelector("form p span").innerHTML = "";
+        }
+
+        function clearForm(){
+            //alert('inside clearForm()');
+            //1. reset the form elements back to original values
+            //2. reset the result display to ""
+
+            document.querySelector("form").reset();
+            document.querySelector("form p span").innerHTML = "";     
+        }
+
+        function showColor(){
+            alert('inside showColor()');
+        }
+
+    </script>
+</head>
+<body>
+    <h1>WDV221 Intro JavaScript</h1>
+    <h2>UNIT-8 Form Handling</h2>
+    <p>Form Processing Example</p>
+    <form method="post" action="#">
+        <p>
+            <label for="val1">Quantity 1:</label>
+            <input type="text" name="val1" id="val1" placeholder="Quantity 1">
+        </p>
+
+        <p>
+            <label>Quantity 2: 
+                <input type="text" name="val2" id="val2" value="42">
+            </label>
+        </p>
+
+        <p>
+            <label for="results">Results: </label>
+            <input type="text" name="results" id="results">
+        </p>
+
+        <p>
+            <label for="redButton">Red: </label>
+            <input type="radio" name="colors" id="redButton" value="red">
+            <label for="greenButton">Green: </label>
+            <input type="radio" name="colors" id="greenButton" value="green">
+        </p>
+
+        <p>
+            Final Results: <span></span>
+        </p>
+
+        <p>
+            <input type="button" name="submit" id="submit" value="Calculate Result" onclick="addQuantities()">
+            <input type="reset" onclick="resetForm()">
+            <input type="button" value="Clear Form" onclick="clearForm()">
+            <input type="button" value="Show Color" onclick="showColor()">
+        </p>
+    </form>
+</body>
+</html>

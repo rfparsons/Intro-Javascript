@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        //array - a group/list/collection of variables with same name in one variable
+
+        let student1 = "Joe";
+        let student2 = "Mary";
+        let student3 = "Mike";
+
+        let studentNames = [];      //creating an empty array
+
+        console.log(studentNames);
+        alert(studentNames);
+
+        studentNames[0] = "Joe";    //assigning a value to an index
+
+        console.log(studentNames);
+        alert(studentNames);
+        
+        studentNames[1] = "Mary";
+        studentNames[2] = "Mike";
+
+        console.log(studentNames);
+        alert(studentNames);
+
+        studentNames[400] = "Zack";
+        
+        console.log(studentNames);
+        alert(studentNames);
+
+        studentNames[1] = "My New Student";
+
+        console.log(studentNames);
+        alert(studentNames);
+
+        studentNames.pop();
+
+        console.log(studentNames);
+        alert(studentNames);
+
+
+
+
+
+
+
+    </script>
+
+
+
+</head>
+<body>
+    <h1>WDV221 Intro JavaScript</h1>
+    <h2>JavaScript Arrays - Examples</h2>
+    <ul>Student Names
+        <script>
+            //output the studentNames as <li> within the <ul>
+            //script tags
+            //names are stored in the studentNames array
+            //use a for loop to loop through the array
+            //use document.write to output the line to the document object
+            for(let x=0;x<studentNames.length;x++){
+                //if studentNames[x] is empty then ignore it/don't write it
+                //if(studentNames[x] == undefined){
+                    //ignore line
+                //}
+                //else{
+                //document.write("<li>" + studentNames[x] + "</li>");                        
+                //}
+                //an alternative if statement using the ! operator
+                if(studentNames[x] != undefined){
+                    document.write("<li>" + studentNames[x] + "</li>"); 
+                }
+ 
+            }
+        </script>
+        <li>Student name goes here</li>
+    </ul>
+</body>
+</html>

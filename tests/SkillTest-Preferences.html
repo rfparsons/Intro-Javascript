@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>WDV221 Intro Javascript - Skill Test Preferences</title>
+<style>
+
+	#container {
+		width:1028px;
+		margin:auto;
+	}
+	
+	ul	{
+		list-style:none;	
+	}
+</style>
+
+<script>
+    let pageFonts = ["'Courier New', Courier, monospace",
+                    "'Times New Roman', Times, serif",
+                    "'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif"];
+
+    let pageFontLabels = ["Monospace", "Serif", "Sans-serif"];
+
+	function changeColor(inColor) {
+		document.querySelector("body").style.backgroundColor = inColor;	
+	}
+
+    function readColor() {
+        colorList = document.querySelectorAll("input[name='radio']");
+		
+        // check every radio button and return the color of the selected one
+        for (let i=0; i < colorList.length; i++) {
+            if (colorList[i].checked) {
+                return colorList[i].value;
+            }
+        }
+    }
+
+    function changeFont() {
+        fontSelector = document.querySelector("select#fonts");
+
+        document.querySelector("body").style.fontFamily = fontSelector.value;
+
+        console.log(fontSelector.value);
+    }
+	
+	function setUpPage() {
+        colorList = document.querySelectorAll("input[name='radio']");
+        fontSelector = document.querySelector("select#fonts");
+
+        fontSelector.onchange = changeFont;
+		
+        // set all radio buttons' onclick to changeColor
+        for (let i=0; i < colorList.length; i++) {
+            colorList[i].onclick = function() {changeColor(readColor());}
+        }
+
+        for (let i=0; i < pageFonts.length; i++) {
+			fontSelector.innerHTML = fontSelector.innerHTML + "\n<option value=\"" + pageFonts[i] +"\">" + pageFontLabels[i] + "</option>";
+        }
+	}
+</script>
+
+</head>
+
+<body onload="setUpPage()">
+
+<div id="container">
+
+	<header>
+			<h1>WDV221 Intro Javascript</h1>
+			<h2>Skill Test - Setting Preferences</h2>
+		</header>
+		
+
+		<section>
+			<h3>Instructions: Change background colors:</h3>
+				<ol>
+					<li>Modify the page as needed to change the background color when a different color is selected.</li>
+					<li>Use the changeColor( ) function to change the background color when a button is selected.</li>
+				</ol>
+		
+				<form action="#">
+                    <ul>Choose your background color:
+                            <li>
+                                    <input type="radio" name="radio" id="radio" value="red">
+                                    <label for="radio">Red</label>
+                            </li>
+                            <li>
+                                    <input type="radio" name="radio" id="radio3" value="green">
+                                    <label for="radio3">Green </label>
+                            </li>
+                            <li>
+                                    <input type="radio" name="radio" id="radio2" value="blue">
+                                    <label for="radio2">Blue</label>
+                            </li>
+                    </ul>
+                </form>
+	 <section>
+
+	<section>
+			<h3>Instructions: Change font selection:</h3>    
+				<ol>
+					<li>Create an array called pageFonts that contains at least three fonts.</li>
+					<li>Use javascript to populate a drop down list of available fonts.</li>
+					<li>Create a function that will allow the user to select the font of their choice. Once selected, all text on the page will change to the selected font.    </li>
+				</ol> 
+				<p>
+                    <select name="fonts" id="fonts">
+                        <option value="" selected disabled>Choose your font:</option>
+                    </select>
+				</p>
+		</section>
+
+</div>
+</body>
+</html>
